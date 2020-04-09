@@ -2,7 +2,6 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 import edu.princeton.cs.algs4.StdOut;
 
-
 public class Deque<Item> implements Iterable<Item> {
     private class ListIterator implements Iterator<Item> {
         Node curr = first;
@@ -104,18 +103,17 @@ public class Deque<Item> implements Iterable<Item> {
     public Item removeLast() {
         if (size <= 0)
             throw new NoSuchElementException();
-        if (size == 1) {
-            
-        }
+
         Node current = first;
-        while (current.next!=null && current.next.next != null) {
+        while (current.next != null && current.next.next != null) {
             current = current.next;
         }
         Node toDelete = last;
-       
-        if (current.next==null){
-            first=null; last=null;
-        }else{
+
+        if (current.next == null) {
+            first = null;
+            last = null;
+        } else {
             current.next = null;
             last = current;
         }
@@ -133,7 +131,7 @@ public class Deque<Item> implements Iterable<Item> {
         Deque<String> queue = new Deque<>();
         queue.addFirst("Ogunbamowo");
         queue.addFirst("Tomiwa");
-        queue.addLast(".io");   
+        queue.addLast(".io");
         for (String x : queue) {
             StdOut.println(x);
         }
