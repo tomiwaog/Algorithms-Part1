@@ -33,6 +33,7 @@ public class Deque<Item> implements Iterable<Item> {
     private class Node {
         Item value;
         Node next;
+
         Node(Item value) {
             this.value = value;
         }
