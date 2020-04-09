@@ -31,7 +31,6 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
     // construct an empty randomized queue
 
-    @SuppressWarnings("unchecked")
     public RandomizedQueue() {
         arrayQueue = (Item[]) new Object[2];
     }
@@ -50,10 +49,11 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     public void enqueue(Item item) {
         if (item == null)
             throw new IllegalArgumentException();
-        if (size == arrayQueue.length) {
-            resizeArray(size * 2);
+        if (size > 0 && size == arrayQueue.length) {
+            resizeArray(arrayQueue.length * 2);
         }
         arrayQueue[size++] = item;
+
     }
 
     // remove and return a random item
@@ -66,8 +66,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
             arrayQueue[i] = arrayQueue[i + 1];
         }
         arrayQueue[--size] = null;
-
-        if (size <= arrayQueue.length / 4) {
+        if (size > 0 && size <= arrayQueue.length / 4) {
             resizeArray(arrayQueue.length / 2);
         }
         return randomItemRemoved;
@@ -84,7 +83,6 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
     // Resizes the array based on current occupancy size
     private void resizeArray(int newSizeRequirement) {
-        @SuppressWarnings("unchecked")
         Item[] copyArray = (Item[]) new Object[newSizeRequirement];
         for (int i = 0; i < size; i++) {
             copyArray[i] = arrayQueue[i];
