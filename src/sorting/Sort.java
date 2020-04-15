@@ -5,6 +5,7 @@ public class Sort {
         for (int i=0; i<arr.length;i++){
             for (int j=i; j>0; j--){
                 if (isLess(arr, j, j-1)) swap(arr, j, j-1);
+                else break;
             }
         }
     }
@@ -19,6 +20,21 @@ public class Sort {
         }
     }
     
+    public static void shellSort(int[] arr) {
+        int length = arr.length;
+        int gap = 1;
+        while (gap < length / 3)
+            gap = 3 * gap + 1;      
+        
+        while (gap >= 1) {
+            for (int i = gap; i < length; i++) {
+                for (int j = i; j >= gap && Sort.isLess(arr, j, j - gap); j -= gap) {
+                    Sort.swap(arr, j, j - gap);
+                }
+            }
+            gap = gap / 3;
+        }
+    }
     public static void bubbleSort(int [] arr){
         for (int i=arr.length-1; i>=0; i--){
             for (int j=0;j<i;j++){

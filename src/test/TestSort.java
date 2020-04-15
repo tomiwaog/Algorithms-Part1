@@ -4,7 +4,6 @@ import java.util.Arrays;
 
 import org.junit.Assert;
 import org.junit.Test;
-
 import sorting.Sort;
 
 public class TestSort {
@@ -64,8 +63,16 @@ public class TestSort {
 
     @Test
     public void testBubbleSort() {
-        int[] arr = new int[] { 13, 7, 6, 45, 21, 9, 101, 102, -1 };
+        int[] arr = new int[] { 13, 7, 6, 45, 21, 9, 101, 102};
         Sort.bubbleSort(arr);
+        boolean sorted = Sort.isSortedAsc(arr);
+        System.out.println(Arrays.toString(arr));
+        Assert.assertEquals(true, sorted);
+    }
+    
+    @Test public void testShellSort(){
+        int[] arr = new int[] { 100, 80, 70, 60, 90, 40, 30, 20, 10, -3,14 };
+        Sort.shellSort(arr);
         boolean sorted = Sort.isSortedAsc(arr);
         System.out.println(Arrays.toString(arr));
         Assert.assertEquals(true, sorted);
