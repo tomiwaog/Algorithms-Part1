@@ -7,10 +7,11 @@ public class SetIntersection {
      * the number of points that are contained both in array a[] and array b[]
      */
     static int countIntersection(Point[] a, Point[] b) {
-        SortTools.shellSort(a);
-        SortTools.shellSort(b);
+        SortTools.shellSort(a); //Sort each Array using subquadratic algo (ShellSort ~O(a^2))
+        SortTools.shellSort(b); //Sort each Array using subquadratic algo (ShellSort ~O(b^2))
 
         int i = 0, j = 0, interSectionCount = 0;
+        //Compare each Point to count equality with Point class implementing Comparable
         while (i < a.length && j < b.length) {
             if (a[i].compareTo(b[j]) == 0) {
                 interSectionCount++;
@@ -21,6 +22,7 @@ public class SetIntersection {
             } else
                 j++;
         }
+        //Return numb of equal Points
         return interSectionCount;
     }
 
