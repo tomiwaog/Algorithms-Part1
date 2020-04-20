@@ -14,16 +14,17 @@ public class TestSortTools {
         boolean SortToolsed = SortTools.isSortedAsc(arr);
         Assert.assertEquals(true, SortToolsed);
     }
+
     @Test
     public void testisSortedAscStrFalse() {
-        String[] arr = new String[] {"bbb","bbc", "bab", "aaa"};
+        String[] arr = new String[] { "bbb", "bbc", "bab", "aaa" };
         boolean SortToolsed = SortTools.isSortedAsc(arr);
         Assert.assertEquals(false, SortToolsed);
     }
-    
+
     @Test
     public void testisSortedAscStr() {
-        String[] arr = new String[] {"aaa", "bab", "bbb","bbc",};
+        String[] arr = new String[] { "aaa", "bab", "bbb", "bbc", };
         boolean SortToolsed = SortTools.isSortedAsc(arr);
         Assert.assertEquals(true, SortToolsed);
     }
@@ -41,7 +42,6 @@ public class TestSortTools {
         boolean SortToolsed = SortTools.isSortedAsc(arr);
         Assert.assertEquals(false, SortToolsed);
     }
-    
 
     @Test
     public void testIsSortedDesc() {
@@ -77,24 +77,26 @@ public class TestSortTools {
 
     @Test
     public void testBubbleSort() {
-        Integer[] arr = new Integer[]{ 13, 7, 6, 45, 21, 9, 101, 102};
+        Integer[] arr = new Integer[] { 13, 7, 6, 45, 21, 9, 101, 102 };
         SortTools.bubbleSort(arr);
         boolean SortToolsed = SortTools.isSortedAsc(arr);
         System.out.println(Arrays.toString(arr));
         Assert.assertEquals(true, SortToolsed);
     }
-    
-    @Test public void testShellSort(){
-        Integer[] arr = new Integer[] { 100, 80, 70, 60, 90, 40, 30, 20, 10, -3,14 };
+
+    @Test
+    public void testShellSort() {
+        Integer[] arr = new Integer[] { 100, 80, 70, 60, 90, 40, 30, 20, 10,
+                -3, 14 };
         SortTools.shellSort(arr);
         boolean SortToolsed = SortTools.isSortedAsc(arr);
         System.out.println(Arrays.toString(arr));
         Assert.assertEquals(true, SortToolsed);
     }
-    
+
     @Test
     public void testShellSortString() {
-        String[] arr = new String[] {"bbb","bbc", "bab", "aaa"};
+        String[] arr = new String[] { "bbb", "bbc", "bab", "aaa" };
         SortTools.shellSort(arr);
         boolean SortToolsed = SortTools.isSortedAsc(arr);
         System.out.println(Arrays.toString(arr));
