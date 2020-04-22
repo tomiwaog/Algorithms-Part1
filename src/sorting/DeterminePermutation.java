@@ -9,9 +9,8 @@ public class DeterminePermutation {
      */
 
     static boolean isPermutation(Integer[] a, Integer b[]) {
-        if (a == null || b == null)
-            return false;
-        if (a.length != b.length)
+
+        if (a == null || b == null || a.length != b.length)
             return false;
 
         // Use subquadratic Sort for a and b, with ~O(N^2)
