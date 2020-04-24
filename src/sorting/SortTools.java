@@ -66,4 +66,53 @@ public class SortTools {
         return arr[i].compareTo(arr[j]) < 0;
     }
 
+    public static void merge(Comparable[] array, Comparable auxArr[], int low,
+            int mid, int high) {
+
+        for (int i = 0; i < array.length; i++)
+            auxArr[i] = array[i];
+
+        int firstIt = low, secondIt = mid + 1;
+        for (int i = low; i <=high; i++) {
+            if (firstIt > mid) {
+                array[i] = auxArr[secondIt++];
+            } else if (secondIt > high) {
+                array[i] = auxArr[firstIt++];
+            } else if (SortTools.isLess(auxArr, firstIt, secondIt)) {
+                array[i] = auxArr[firstIt++];
+            } else {
+                array[i] = auxArr[secondIt++];
+            }
+        }
+    }
+
+    public static void mergeSort(Comparable[] array, Comparable auxArr[],
+            int low, int high) {
+        int mid = low + (high - low) / 2;
+        if (high <= low)
+            return;
+        mergeSort(array, auxArr, low, mid);
+        mergeSort(array, auxArr, mid + 1, high);
+        merge(array, auxArr, low, mid, high);
+
+    }
+
+    public static Comparable[] mergeTwo(Comparable[] array1, Comparable[] array2) {
+        // Merging Two Separate Arrays
+        Comparable[] newArray = new Comparable[array1.length + array2.length];
+
+        int firstIt = 0, secondIt = 0;
+        for (int i = 0; i < newArray.length; i++) {
+            if (firstIt >= array1.length) {
+                newArray[i] = array2[secondIt++];
+            } else if (secondIt >= array2.length) {
+                newArray[i] = array1[firstIt++];
+            } else if ((Integer) array1[firstIt] < (Integer) array2[secondIt]) {
+                newArray[i] = array1[firstIt++];
+            } else {
+                newArray[i] = array2[secondIt++];
+            }
+        }
+        return newArray;
+    }
 }
