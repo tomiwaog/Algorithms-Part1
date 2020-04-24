@@ -102,4 +102,33 @@ public class TestSortTools {
         System.out.println(Arrays.toString(arr));
         Assert.assertEquals(true, SortToolsed);
     }
+
+    @Test
+    public void testMerge() {
+        Integer arr[] = new Integer[] { 1, 3, 5, 7, 9, 2, 4, 6, 8, 10 };
+        SortTools.merge(arr, new Integer[arr.length], 0, 4, arr.length - 1);
+        boolean SortToolsed = SortTools.isSortedAsc(arr);
+        System.out.println("Merge Func: " + Arrays.toString(arr));
+        Assert.assertEquals(true, SortToolsed);
+    }
+
+    @Test
+    public void testMergeTwo() {
+        Integer array1[] = new Integer[] { 0, 1, 1, 3, 5, 7, 9 };
+        Integer array2[] = new Integer[] { 2, 3, 4, 6, 8, 10 };
+        Comparable[] arr = SortTools.mergeTwo(array1, array2);
+        boolean SortToolsed = SortTools.isSortedAsc(arr);
+        System.out.println("Merge Func2: " + Arrays.toString(arr));
+        Assert.assertEquals(true, SortToolsed);
+    }
+
+    @Test
+    public void testMergeSort() {
+        Integer[] arr = new Integer[] { 100, 80, 70, 60, 90, 40, 30, 20, 10,
+                -3, 14 };
+        SortTools.mergeSort(arr, new Integer[arr.length], 0, arr.length - 1);
+        boolean SortToolsed = SortTools.isSortedAsc(arr);
+        System.out.println("MergeSort: " + Arrays.toString(arr));
+        Assert.assertEquals(true, SortToolsed);
+    }
 }
