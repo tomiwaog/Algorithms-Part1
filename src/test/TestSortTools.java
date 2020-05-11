@@ -131,4 +131,15 @@ public class TestSortTools {
         System.out.println("MergeSort: " + Arrays.toString(arr));
         Assert.assertEquals(true, SortToolsed);
     }
+    
+    @Test
+    public void testMergeSortSpaceOptimized() {
+        Integer[] arr = new Integer[] {100, 80, 70, 60, 90, 40, 30, 20, 10,
+                -3, 14 };
+//        Integer[] arr = new Integer[] {100, 80, 70, 60, 90 };
+        SortTools.mergeSortSpaceOptimization(arr);
+        boolean SortToolsed = SortTools.isSortedAsc(arr);
+        System.out.println("MergeSort Optimized: " + Arrays.toString(arr));
+        Assert.assertEquals(true, SortToolsed);
+    }
 }

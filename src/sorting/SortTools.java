@@ -1,5 +1,7 @@
 package sorting;
 
+import java.util.Arrays;
+
 public class SortTools {
     public static void insertionSort(Comparable[] arr) {
         for (int i = 0; i < arr.length; i++) {
@@ -88,9 +90,9 @@ public class SortTools {
 
     public static void mergeSort(Comparable[] array, Comparable auxArr[],
             int low, int high) {
-        int mid = low + (high - low) / 2;
         if (high <= low)
             return;
+        int mid = low + (high - low) / 2;
         mergeSort(array, auxArr, low, mid);
         mergeSort(array, auxArr, mid + 1, high);
         merge(array, auxArr, low, mid, high);
@@ -114,5 +116,36 @@ public class SortTools {
             }
         }
         return newArray;
+    }
+    
+    //An optimised version of MergeSort using N/2 Space instead of N
+    public static void mergeSortSpaceOptimization(Comparable[] array){
+        Comparable[] tempArray = new Comparable[array.length/2 + array.length%2]; //Adds 1 to temp array if length is odd
+        mergeSplit(array, tempArray, 0, array.length-1);
+    }
+    
+    private static void mergeSplit(Comparable array[], Comparable aux[], int low, int high){
+        if (high<=low)return;
+        int mid = low+(high-low)/2;
+        mergeSplit(array,aux, low, mid);
+        mergeSplit(array,aux, mid+1, high);
+        mergeSpaceOptimized(array,aux,low, mid, high);
+    }
+    private static void mergeSpaceOptimized(Comparable[] array, Comparable auxArray[], int low, int mid, int high){
+        for (int i=low, j=0;i<=mid; i++){
+            auxArray[j++] = array[i]; //Copies left half of array into Temp Array
+        }
+//        if (!SortTools.isSortedAsc(auxArray)) throw new RuntimeException("Temp Array is not Sorted!");
+        int size = mid-low+1;
+        int i=0, j=mid+1;
+        for (int k=low; k<=high;k++){
+            if (i>=size) array[k] = array[j++];
+            else if (j>high) array[k] = auxArray[i++];
+            else if (SortTools.isLess(array[j], auxArray[i])) array[k] = array[j++];
+            else array[k] = auxArray[i++];
+        }
+    }
+    private static boolean isLess(Comparable num1, Comparable num2){
+        return num1.compareTo(num2)<0;
     }
 }
