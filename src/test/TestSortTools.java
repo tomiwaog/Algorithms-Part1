@@ -162,9 +162,9 @@ public class TestSortTools {
     @Test
     public void testKLargestElement(){
         Integer x[] = new Integer[]{3,-5,10,2,8};
-        Integer l = (Integer) QuickSelect.findKthLargest(x,1);
+        Integer l = (Integer) QuickSelect.findKthLargest(x,2);
         System.out.println("Kth Largest: " + l);
-        Assert.assertEquals(new Integer(10), l);
+        Assert.assertEquals(new Integer(8), l);
     }
     
     @Test

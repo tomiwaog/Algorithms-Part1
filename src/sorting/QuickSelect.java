@@ -38,23 +38,35 @@ public class QuickSelect {
     }
 
     public static Comparable findKthLargest(Comparable[] arr, int k) {
-        if (k >= arr.length || k < 0){
+        if (k >= arr.length || k < 0) {
             System.err.println("NOT VALID");
-            return -1; 
+            return -1;
         }
-            
+
         k = arr.length - k;
         Comparable result = findK(arr, k, 0, arr.length - 1);
-//        Comparable result = select(arr, k, 0, arr.length - 1);
         return result;
+
+        // int i = 0, j = arr.length - 1;
+        // while (i < j) {
+        // int partition = partition(arr, i, j);
+        // if (partition < k) {
+        // i = partition + 1;
+        // } else if (partition > k) {
+        // j = partition - 1;
+        // } else {
+        // return arr[k];
+        // }
+        // }
+        // return arr[k];
     }
 
     private static Comparable findK(Comparable[] arr, int k, int start, int end) {
         int p = partition(arr, start, end);
         if (p < k) {
-            return findK(arr, k, p+ 1, end);
+            return findK(arr, k, p + 1, end);
         } else if (p > k) {
-            return findK(arr, k, start, p-1);
+            return findK(arr, k, start, p - 1);
         } else
             return arr[p];
     }
